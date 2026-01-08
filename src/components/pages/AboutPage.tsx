@@ -204,7 +204,7 @@ export function AboutPage() {
                 Kumaraguru Institutions (KI) was founded in 1984 with the establishment of Kumaraguru College of Technology (KCT), and has since grown into a constellation of institutions that embody a singular vision: to offer education that is exceptional, inspirational, and transformative.
               </p>
               <p className="text-lg text-gray-700 leading-relaxed">
-                Over the years, this vision has flourished into the KCT Business School, the Kumaraguru Institute of Agriculture, and the Kumaraguru College of Liberal Arts and Science. Together, they represent the enduring commitment of the Sakthi Group of Companies and the profound foresight of the Founder Chairman, Arutchelvar Dr. N. Mahalingam.
+                Over the years, this vision has flourished into the KCT Business School, the Kumaraguru Institute of Agriculture, and the Kumaraguru College of Liberal Arts and Science. Together, they represent the enduring commitment of the Sakthi Group of Companies and the profound foresight of the Founder Chairman, Arutchelvar Dr. N. Mahalingam, whose legacy continues to guide and inspire.
               </p>
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-2xl border-l-4 border-[#1565d8]">
                 <p className="text-gray-800 italic text-lg leading-relaxed">

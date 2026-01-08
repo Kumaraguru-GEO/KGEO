@@ -151,7 +151,7 @@ export function Navigation() {
                 Partnerships
               </Link>
               <a
-                href="#"
+                href="/global-faculty"
                 className="text-[#1b2840] hover:text-[#228be6] transition-colors py-2"
                 style={{ fontSize: '16px', fontWeight: '500' }}
                 onClick={() => setIsMenuOpen(false)}
@@ -159,7 +159,7 @@ export function Navigation() {
                 Global Faculty
               </a>
               <a
-                href="#"
+                href="/research"
                 className="text-[#1b2840] hover:text-[#228be6] transition-colors py-2"
                 style={{ fontSize: '16px', fontWeight: '500' }}
                 onClick={() => setIsMenuOpen(false)}
@@ -188,7 +188,7 @@ export function Navigation() {
                       KI Outbound Student
                     </Link>
                     <a
-                      href="#"
+                      href="/inbound-students"
                       className="block text-[#1b2840] hover:text-[#228be6] transition-colors py-2"
                       style={{ fontSize: '15px', fontWeight: '500' }}
                       onClick={() => setIsMenuOpen(false)}
