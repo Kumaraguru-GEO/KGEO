@@ -14,9 +14,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // CORS configuration for both local and production
 const corsOptions = {
-  origin: NODE_ENV === 'production' 
-    ? ['https://yourdomain.com', 'https://www.yourdomain.com']
-    : ['http://localhost:5173', 'http://localhost:3000'],
+  origin: true,
   credentials: true,
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type']

@@ -1,20 +1,10 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "env": {
-    "VITE_SMTP_USER": "@vite_smtp_user",
-    "SMTP_PASS": "@smtp_pass",
-    "VITE_GEO_EMAIL": "@vite_geo_email"
-  },
-  "functions": {
-    "server.js": {
-      "runtime": "nodejs20.x"
-    }
-  },
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/server.js"
+      "destination": "/api/serverless"
     }
   ]
 }
