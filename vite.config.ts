@@ -63,11 +63,18 @@ export default defineConfig({
   build: {
     target: 'esnext',
     outDir: 'dist',
+    sourcemap: false,
   },
   server: {
     port: 3000,
     open: true,
     host: true,
     allowedHosts: ['0ca95c3634c6.ngrok-free.app'],
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+      },
+    },
   },
 });

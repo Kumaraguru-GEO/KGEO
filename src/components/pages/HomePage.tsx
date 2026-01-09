@@ -392,249 +392,172 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Global Footprints Section - Modern Infographic Design */}
-      <section className="relative py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden scroll-section bg-[#0a1929]">
-        {/* Subtle Grid Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'linear-gradient(#1565d8 1px, transparent 1px), linear-gradient(90deg, #1565d8 1px, transparent 1px)',
-            backgroundSize: '50px 50px'
+      {/* Global Footprints Section - Glassy Circular Stats */}
+      <section className="relative py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-[#0f172a]">
+        {/* Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0f172a] to-[#1e293b] opacity-90">
+          <div className="absolute inset-0 opacity-20" style={{
+            backgroundImage: 'radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.2) 0%, transparent 30%), radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.15) 0%, transparent 30%)',
           }}></div>
         </div>
-
-        {/* Animated Dots */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-2 h-2 bg-[#1565d8] rounded-full animate-pulse"></div>
-          <div className="absolute top-40 right-20 w-3 h-3 bg-[#228be6] rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-          <div className="absolute bottom-32 left-1/4 w-2 h-2 bg-[#1565d8] rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute bottom-20 right-1/3 w-3 h-3 bg-[#228be6] rounded-full animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+        
+        {/* Floating Particles */}
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <div 
+              key={i}
+              className="absolute rounded-full bg-white/5"
+              style={{
+                width: Math.random() * 6 + 1 + 'px',
+                height: Math.random() * 6 + 1 + 'px',
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                opacity: Math.random() * 0.6 + 0.1,
+                animation: `float ${Math.random() * 10 + 10}s linear infinite`,
+                animationDelay: `${Math.random() * 5}s`,
+                transform: `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)`
+              }}
+            />
+          ))}
         </div>
 
         <div className="container mx-auto max-w-7xl relative z-10">
           {/* Header */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-[#1565d8]/10 backdrop-blur-sm rounded-full border border-[#1565d8]/30">
-              <div className="w-2 h-2 bg-[#1565d8] rounded-full animate-pulse"></div>
-              <span className="text-[#228be6] font-semibold text-xs tracking-wider uppercase">Statistical Overview</span>
+          <div className="text-center mb-12 lg:mb-16 px-4">
+            <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 transition-all duration-300">
+              <span className="text-cyan-400 font-medium text-xs tracking-wider uppercase">Statistical Overview</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3">
-              Global Footprints — Measurable Impact, Trusted Reach
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3 leading-tight">
+              Global Footprints — <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Measurable Impact</span>
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
               Driving international collaboration through measurable outcomes
             </p>
           </div>
 
-          {/* Stats Grid - Modern Infographic Style */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Stats Grid - Circular Design */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
             {/* Stat 1 - Global University Partners */}
-            <div className="group relative bg-[#0f2942] rounded-2xl p-6 border border-[#1565d8]/20 hover:border-[#1565d8]/50 transition-all duration-300 hover:shadow-xl hover:shadow-[#1565d8]/20">
-              {/* Top Label */}
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-[#1565d8]/20 rounded-lg flex items-center justify-center">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1565d8" strokeWidth="2">
-                      <path d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/>
-                    </svg>
+            <div className="relative group">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full blur opacity-30 group-hover:opacity-50 transition-all duration-300"></div>
+              <div className="relative bg-[#1e293b] p-6 rounded-2xl h-full flex flex-col items-center text-center">
+                <div className="w-32 h-32 rounded-full border-4 border-yellow-400/30 flex items-center justify-center mb-4 relative">
+                  <div className="w-28 h-28 rounded-full border-4 border-yellow-400/50 flex items-center justify-center">
+                    <div className="w-24 h-24 rounded-full border-4 border-yellow-400 flex items-center justify-center flex-col">
+                      <CounterAnimation end={25} suffix="+" className="text-2xl font-bold text-white" />
+                      <span className="text-xs text-yellow-300 mt-1">Partners</span>
+                    </div>
                   </div>
-                  <span className="text-xs text-gray-500 uppercase tracking-wider font-semibold">Partners</span>
+                  <div className="absolute -bottom-2 bg-yellow-400/90 text-yellow-900 text-xs font-semibold px-3 py-1 rounded-full">
+                    Active
+                  </div>
                 </div>
-                <div className="px-2 py-1 bg-[#1565d8]/10 rounded text-xs text-[#228be6] font-semibold">
-                  Active
-                </div>
-              </div>
-
-              {/* Main Number */}
-              <div className="mb-4">
-                <CounterAnimation 
-                  end={25} 
-                  suffix="+"
-                  className="text-5xl font-bold bg-gradient-to-r from-[#1565d8] to-[#228be6] bg-clip-text text-transparent"
-                />
-              </div>
-
-              {/* Description */}
-              <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                Global University Partners
-              </p>
-
-              {/* Progress Bar */}
-              <div className="relative h-2 bg-[#1565d8]/10 rounded-full overflow-hidden">
-                <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#1565d8] to-[#228be6] rounded-full w-4/5 animate-pulse"></div>
-              </div>
-
-              {/* Small Stats */}
-              <div className="mt-4 flex items-center justify-between text-xs">
-                <span className="text-gray-500">Coverage</span>
-                <span className="text-[#228be6] font-semibold">10+ Countries</span>
+                <h3 className="text-white font-medium text-lg mb-1">Global University Partners</h3>
+                <p className="text-gray-400 text-sm">Expanding our academic network worldwide</p>
               </div>
             </div>
 
-            {/* Stat 2 - Students in Mobility */}
-            <div className="group relative bg-[#0f2942] rounded-2xl p-6 border border-[#228be6]/20 hover:border-[#228be6]/50 transition-all duration-300 hover:shadow-xl hover:shadow-[#228be6]/20">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-[#228be6]/20 rounded-lg flex items-center justify-center">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#228be6" strokeWidth="2">
-                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                      <circle cx="9" cy="7" r="4"/>
-                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                    </svg>
+            {/* Stat 2 - Countries Engaged */}
+            <div className="relative group">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-400 to-emerald-500 rounded-full blur opacity-30 group-hover:opacity-50 transition-all duration-300"></div>
+              <div className="relative bg-[#1e293b] p-6 rounded-2xl h-full flex flex-col items-center text-center">
+                <div className="w-32 h-32 rounded-full border-4 border-emerald-400/30 flex items-center justify-center mb-4 relative">
+                  <div className="w-28 h-28 rounded-full border-4 border-emerald-400/50 flex items-center justify-center">
+                    <div className="w-24 h-24 rounded-full border-4 border-emerald-400 flex items-center justify-center flex-col">
+                      <CounterAnimation end={10} suffix="+" className="text-2xl font-bold text-white" />
+                      <span className="text-xs text-emerald-300 mt-1">Countries</span>
+                    </div>
                   </div>
-                  <span className="text-xs text-gray-500 uppercase tracking-wider font-semibold">Students</span>
+                  <div className="absolute -bottom-2 bg-emerald-400/90 text-emerald-900 text-xs font-semibold px-3 py-1 rounded-full">
+                    Global
+                  </div>
                 </div>
-                <div className="px-2 py-1 bg-[#228be6]/10 rounded text-xs text-[#228be6] font-semibold">
-                  Enrolled
-                </div>
-              </div>
-              <div className="mb-4">
-                <CounterAnimation 
-                  end={300} 
-                  suffix="+"
-                  className="text-5xl font-bold bg-gradient-to-r from-[#228be6] to-[#1565d8] bg-clip-text text-transparent"
-                />
-              </div>
-              <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                Students in Mobility programs
-              </p>
-              <div className="relative h-2 bg-[#228be6]/10 rounded-full overflow-hidden">
-                <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#228be6] to-[#1565d8] rounded-full w-3/4 animate-pulse"></div>
-              </div>
-              <div className="mt-4 flex items-center justify-between text-xs">
-                <span className="text-gray-500">Participation</span>
-                <span className="text-[#228be6] font-semibold">75% Active</span>
+                <h3 className="text-white font-medium text-lg mb-1">Countries Engaged</h3>
+                <p className="text-gray-400 text-sm">Building bridges across continents</p>
               </div>
             </div>
 
-            {/* Stat 3 - Online Visiting Faculty */}
-            <div className="group relative bg-[#0f2942] rounded-2xl p-6 border border-[#1565d8]/20 hover:border-[#1565d8]/50 transition-all duration-300 hover:shadow-xl hover:shadow-[#1565d8]/20">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-[#1565d8]/20 rounded-lg flex items-center justify-center">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1565d8" strokeWidth="2">
-                      <path d="M23 7l-7 5 7 5V7z"/>
-                      <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
-                    </svg>
+            {/* Stat 3 - Students in Mobility */}
+            <div className="relative group">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-rose-400 to-rose-500 rounded-full blur opacity-30 group-hover:opacity-50 transition-all duration-300"></div>
+              <div className="relative bg-[#1e293b] p-6 rounded-2xl h-full flex flex-col items-center text-center">
+                <div className="w-32 h-32 rounded-full border-4 border-rose-400/30 flex items-center justify-center mb-4 relative">
+                  <div className="w-28 h-28 rounded-full border-4 border-rose-400/50 flex items-center justify-center">
+                    <div className="w-24 h-24 rounded-full border-4 border-rose-400 flex items-center justify-center flex-col">
+                      <CounterAnimation end={300} suffix="+" className="text-2xl font-bold text-white" />
+                      <span className="text-xs text-rose-300 mt-1">Students</span>
+                    </div>
                   </div>
-                  <span className="text-xs text-gray-500 uppercase tracking-wider font-semibold">Faculty</span>
+                  <div className="absolute -bottom-2 bg-rose-400/90 text-rose-900 text-xs font-semibold px-3 py-1 rounded-full">
+                    Active
+                  </div>
                 </div>
-                <div className="px-2 py-1 bg-[#1565d8]/10 rounded text-xs text-[#228be6] font-semibold">
-                  Online
-                </div>
-              </div>
-              <div className="mb-4">
-                <CounterAnimation 
-                  end={100} 
-                  suffix="+"
-                  className="text-5xl font-bold bg-gradient-to-r from-[#1565d8] to-[#228be6] bg-clip-text text-transparent"
-                />
-              </div>
-              <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                Online visiting faculty
-              </p>
-              <div className="relative h-2 bg-[#1565d8]/10 rounded-full overflow-hidden">
-                <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#1565d8] to-[#228be6] rounded-full w-2/3 animate-pulse"></div>
-              </div>
-              <div className="mt-4 flex items-center justify-between text-xs">
-                <span className="text-gray-500">Engagement</span>
-                <span className="text-[#228be6] font-semibold">67% Teaching</span>
+                <h3 className="text-white font-medium text-lg mb-1">Students in Mobility</h3>
+                <p className="text-gray-400 text-sm">Expanding horizons through global education</p>
               </div>
             </div>
 
-            {/* Stat 4 - Countries Engaged */}
-            <div className="group relative bg-[#0f2942] rounded-2xl p-6 border border-[#228be6]/20 hover:border-[#228be6]/50 transition-all duration-300 hover:shadow-xl hover:shadow-[#228be6]/20">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-[#228be6]/20 rounded-lg flex items-center justify-center">
-                    <Globe className="w-5 h-5 text-[#228be6]" />
+            {/* Stat 4 - Online Visiting Faculty */}
+            <div className="relative group">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-full blur opacity-30 group-hover:opacity-50 transition-all duration-300"></div>
+              <div className="relative bg-[#1e293b] p-6 rounded-2xl h-full flex flex-col items-center text-center">
+                <div className="w-32 h-32 rounded-full border-4 border-cyan-400/30 flex items-center justify-center mb-4 relative">
+                  <div className="w-28 h-28 rounded-full border-4 border-cyan-400/50 flex items-center justify-center">
+                    <div className="w-24 h-24 rounded-full border-4 border-cyan-400 flex items-center justify-center flex-col">
+                      <CounterAnimation end={100} suffix="+" className="text-2xl font-bold text-white" />
+                      <span className="text-xs text-cyan-300 mt-1">Faculty</span>
+                    </div>
                   </div>
-                  <span className="text-xs text-gray-500 uppercase tracking-wider font-semibold">Global</span>
+                  <div className="absolute -bottom-2 bg-cyan-400/90 text-cyan-900 text-xs font-semibold px-3 py-1 rounded-full">
+                    Online
+                  </div>
                 </div>
-                <div className="px-2 py-1 bg-[#228be6]/10 rounded text-xs text-[#228be6] font-semibold">
-                  Expanding
-                </div>
-              </div>
-              <div className="mb-4">
-                <CounterAnimation 
-                  end={10} 
-                  suffix="+"
-                  className="text-5xl font-bold bg-gradient-to-r from-[#228be6] to-[#1565d8] bg-clip-text text-transparent"
-                />
-              </div>
-              <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                Countries Engaged
-              </p>
-              <div className="relative h-2 bg-[#228be6]/10 rounded-full overflow-hidden">
-                <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#228be6] to-[#1565d8] rounded-full w-1/2 animate-pulse"></div>
-              </div>
-              <div className="mt-4 flex items-center justify-between text-xs">
-                <span className="text-gray-500">Reach</span>
-                <span className="text-[#228be6] font-semibold">5 Continents</span>
+                <h3 className="text-white font-medium text-lg mb-1">Online Visiting Faculty</h3>
+                <p className="text-gray-400 text-sm">Global experts sharing knowledge</p>
               </div>
             </div>
 
-            {/* Stat 5 - Global Activities */}
-            <div className="group relative bg-[#0f2942] rounded-2xl p-6 border border-[#1565d8]/20 hover:border-[#1565d8]/50 transition-all duration-300 hover:shadow-xl hover:shadow-[#1565d8]/20">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-[#1565d8]/20 rounded-lg flex items-center justify-center">
-                    <Calendar className="w-5 h-5 text-[#1565d8]" />
+            {/* Stat 5 - Joint Research Projects */}
+            <div className="relative group">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-400 to-indigo-500 rounded-full blur opacity-30 group-hover:opacity-50 transition-all duration-300"></div>
+              <div className="relative bg-[#1e293b] p-6 rounded-2xl h-full flex flex-col items-center text-center">
+                <div className="w-32 h-32 rounded-full border-4 border-indigo-400/30 flex items-center justify-center mb-4 relative">
+                  <div className="w-28 h-28 rounded-full border-4 border-indigo-400/50 flex items-center justify-center">
+                    <div className="w-24 h-24 rounded-full border-4 border-indigo-400 flex items-center justify-center flex-col">
+                      <CounterAnimation end={10} suffix="+" className="text-2xl font-bold text-white" />
+                      <span className="text-xs text-indigo-300 mt-1">Projects</span>
+                    </div>
                   </div>
-                  <span className="text-xs text-gray-500 uppercase tracking-wider font-semibold">Events</span>
+                  <div className="absolute -bottom-2 bg-indigo-400/90 text-indigo-900 text-xs font-semibold px-3 py-1 rounded-full">
+                    Ongoing
+                  </div>
                 </div>
-                <div className="px-2 py-1 bg-[#1565d8]/10 rounded text-xs text-[#228be6] font-semibold">
-                  Annual
-                </div>
-              </div>
-              <div className="mb-4">
-                <CounterAnimation 
-                  end={250} 
-                  suffix="+"
-                  className="text-5xl font-bold bg-gradient-to-r from-[#1565d8] to-[#228be6] bg-clip-text text-transparent"
-                />
-              </div>
-              <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                Global activities
-              </p>
-              <div className="relative h-2 bg-[#1565d8]/10 rounded-full overflow-hidden">
-                <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#1565d8] to-[#228be6] rounded-full w-4/5 animate-pulse"></div>
-              </div>
-              <div className="mt-4 flex items-center justify-between text-xs">
-                <span className="text-gray-500">Frequency</span>
-                <span className="text-[#228be6] font-semibold">Weekly Events</span>
+                <h3 className="text-white font-medium text-lg mb-1">Joint Research Projects</h3>
+                <p className="text-gray-400 text-sm">Collaborative innovation across borders</p>
               </div>
             </div>
 
-            {/* Stat 6 - Joint Research Projects */}
-            <div className="group relative bg-[#0f2942] rounded-2xl p-6 border border-[#228be6]/20 hover:border-[#228be6]/50 transition-all duration-300 hover:shadow-xl hover:shadow-[#228be6]/20">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-[#228be6]/20 rounded-lg flex items-center justify-center">
-                    <BookOpen className="w-5 h-5 text-[#228be6]" />
+            {/* Stat 6 - Global Activities */}
+            <div className="relative group">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full blur opacity-30 group-hover:opacity-50 transition-all duration-300"></div>
+              <div className="relative bg-[#1e293b] p-6 rounded-2xl h-full flex flex-col items-center text-center">
+                <div className="w-32 h-32 rounded-full border-4 border-blue-400/30 flex items-center justify-center mb-4 relative">
+                  <div className="w-28 h-28 rounded-full border-4 border-blue-400/50 flex items-center justify-center">
+                    <div className="w-24 h-24 rounded-full border-4 border-blue-400 flex items-center justify-center flex-col">
+                      <CounterAnimation 
+                        end={250} 
+                        suffix="+"
+                        className="text-2xl font-bold text-white"
+                      />
+                      <span className="text-xs text-blue-300 mt-1">Activities</span>
+                    </div>
                   </div>
-                  <span className="text-xs text-gray-500 uppercase tracking-wider font-semibold">Research</span>
+                  <div className="absolute -bottom-2 bg-blue-400/90 text-blue-900 text-xs font-semibold px-3 py-1 rounded-full">
+                    Annual
+                  </div>
                 </div>
-                <div className="px-2 py-1 bg-[#228be6]/10 rounded text-xs text-[#228be6] font-semibold">
-                  Ongoing
-                </div>
-              </div>
-              <div className="mb-4">
-                <CounterAnimation 
-                  end={10} 
-                  suffix="+"
-                  className="text-5xl font-bold bg-gradient-to-r from-[#228be6] to-[#1565d8] bg-clip-text text-transparent"
-                />
-              </div>
-              <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                Joint Research Projects
-              </p>
-              <div className="relative h-2 bg-[#228be6]/10 rounded-full overflow-hidden">
-                <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#228be6] to-[#1565d8] rounded-full w-1/3 animate-pulse"></div>
-              </div>
-              <div className="mt-4 flex items-center justify-between text-xs">
-                <span className="text-gray-500">Collaboration</span>
-                <span className="text-[#228be6] font-semibold">Multi-Institutional</span>
+                <h3 className="text-white font-medium text-lg mb-1">Global Activities</h3>
+                <p className="text-gray-400 text-sm mb-4">Engaging events and initiatives</p>
               </div>
             </div>
           </div>
@@ -758,12 +681,8 @@ export function HomePage() {
       <section
         className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden scroll-section"
       >
-        <div className="absolute inset-0">
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1920"
-            alt="Background"
-            className="w-full h-full object-cover"
-          />
+        <div className="absolute inset-0" style={{background: 'rgb(33, 47, 70)'}}>
+          
         </div>
 
         <div className="container mx-auto max-w-4xl text-center text-white relative z-10">

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Users, BookOpen, Target, GraduationCap, Award } from 'lucide-react';
+import { Users, BookOpen, Target, GraduationCap, Award, MapPin } from 'lucide-react';
 import KGeo3_1 from '../../assets/K-GEO-3 (1).JPG';
 import KGeo3_2 from '../../assets/K-GEO-3 (2).JPG';
 
-const PartnershipCard = ({ title, items, color = 'black' }) => (
+const PartnershipCard = ({ title, items, color = 'black' }: { title: string; items: string[]; color?: string }) => (
   <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-200">
     <h3 className={`text-xl font-bold mb-4 ${color === 'blue' ? 'text-[#1565d8]' : 'text-gray-900'}`}>
       {title}
@@ -40,6 +40,53 @@ const PartnershipOpportunity = ({ title, opportunities, icon: Icon }: { title: s
 );
 
 export default function Partnerships() {
+  // Mobile load more controls (mobile: show 10, desktop: show all)
+  const [showAllPartners, setShowAllPartners] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 640);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Partner list (31)
+  const partnersData = [
+    {no: 1, name: 'Asia Pacific University of Technology and Innovation', country: 'Malaysia', region: 'Asia'},
+    {no: 2, name: 'Ara Institute of Canterbury', country: 'New Zealand', region: 'Oceania'},
+    {no: 3, name: 'BGMEA University of Fashion and Technology', country: 'Bangladesh', region: 'Asia'},
+    {no: 4, name: 'Colorado State University', country: 'USA', region: 'North America'},
+    {no: 5, name: 'Dresden International University', country: 'Germany', region: 'Europe'},
+    {no: 6, name: 'University of Huddersfield', country: 'UK', region: 'Europe'},
+    {no: 7, name: 'James Cook University', country: 'Singapore', region: 'Asia'},
+    {no: 8, name: 'Northern Illinois University', country: 'USA', region: 'North America'},
+    {no: 9, name: 'Manchester Metropolitan University', country: 'UK', region: 'Europe'},
+    {no: 10, name: 'MAHSA University', country: 'Malaysia', region: 'Asia'},
+    {no: 11, name: 'Management Development Institute of Singapore', country: 'Singapore', region: 'Asia'},
+    {no: 12, name: 'National Dong Hwa University', country: 'Taiwan', region: 'Asia'},
+    {no: 13, name: 'PKFokam Institute of Excellence', country: 'Cameroon', region: 'Africa'},
+    {no: 14, name: 'Rochester Institute of Technology', country: 'USA', region: 'North America'},
+    {no: 15, name: 'RWTH Aachen University – ITA', country: 'Germany', region: 'Europe'},
+    {no: 16, name: 'RWTH Aachen University – International Academy', country: 'Germany', region: 'Europe'},
+    {no: 17, name: 'Swinburne University of Technology – Sarawak', country: 'Malaysia', region: 'Asia'},
+    {no: 18, name: 'Skyline University College', country: 'UAE', region: 'Middle East'},
+    {no: 19, name: 'Texas Tech University', country: 'USA', region: 'North America'},
+    {no: 20, name: 'Technical University of Liberec', country: 'Czech Republic', region: 'Europe'},
+    {no: 21, name: 'University of Leeds', country: 'UK', region: 'Europe'},
+    {no: 22, name: "Taylor's University", country: 'Malaysia', region: 'Asia'},
+    {no: 23, name: 'upGrad Connect', country: 'Australia', region: 'Oceania'},
+    {no: 24, name: 'Sri Lanka Institute of Textile and Apparel (SLITA)', country: 'Sri Lanka', region: 'Asia'},
+    {no: 25, name: 'Multimedia University', country: 'Malaysia', region: 'Asia'},
+    {no: 26, name: 'Tianjin University', country: 'China', region: 'Asia'},
+    {no: 27, name: 'Universiti Teknologi Brunei', country: 'Brunei', region: 'Asia'},
+    {no: 28, name: 'University of Seoul', country: 'South Korea', region: 'Asia'},
+    {no: 29, name: 'École de Design – Intuit Lab', country: 'France', region: 'Europe'},
+    {no: 30, name: 'University of Nottingham', country: 'UK', region: 'Europe'},
+    {no: 31, name: 'Ben-Gurion University', country: 'Israel', region: 'Middle East'}
+  ];
+  const displayedPartners = isMobile && !showAllPartners ? partnersData.slice(0, 10) : partnersData;
+  const totalPartners = partnersData.length;
+
   // Scroll animation observer
   useEffect(() => {
     const observerOptions = {
@@ -139,6 +186,14 @@ export default function Partnerships() {
     notes: ''
   });
 
+  const [formStatus, setFormStatus] = useState<{
+    type: 'idle' | 'loading' | 'success' | 'error';
+    message: string;
+  }>({
+    type: 'idle',
+    message: ''
+  });
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
     const checked = (e.target as HTMLInputElement).checked;
@@ -159,10 +214,55 @@ export default function Partnerships() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
+    setFormStatus({ type: 'loading', message: 'Sending...' });
+
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      const response = await fetch(`${apiUrl}/api/partnership-inquiry`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setFormStatus({
+          type: 'success',
+          message: 'Thank you! We will contact you within 24-48 hours.'
+        });
+        
+        setFormData({
+          institution: '',
+          country: '',
+          contactPerson: '',
+          designation: '',
+          email: '',
+          phone: '',
+          interests: {
+            studentMobility: false,
+            facultyMobility: false,
+            jointResearch: false,
+            academicPrograms: false,
+            specializedCollab: false
+          },
+          notes: ''
+        });
+
+        setTimeout(() => {
+          document.getElementById('contact_form')?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      } else {
+        throw new Error(data.message);
+      }
+    } catch (error) {
+      setFormStatus({
+        type: 'error',
+        message: 'Unable to submit. Please try again or email deebakbalaji07@gmail.com'
+      });
+    }
   };
 
   return (
@@ -207,7 +307,7 @@ export default function Partnerships() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="#opportunities"
+              href="#partnerships_opportunities"
               className="inline-flex items-center gap-3 px-8 py-4 bg-white text-[#1565d8] rounded-full hover:bg-gray-100 transition-all transform hover:scale-105 shadow-xl font-semibold"
             >
               Explore Opportunities
@@ -216,7 +316,7 @@ export default function Partnerships() {
               </svg>
             </a>
             <a
-              href="mailto:global@kumaraguru.in?subject=Partnership Inquiry - Kumaraguru Institutions"
+              href="#contact_form"
               className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white border-2 border-white/40 rounded-full hover:bg-white/20 transition-all font-semibold"
             >
               Partner With Us
@@ -252,59 +352,47 @@ export default function Partnerships() {
             </div>          </div>
 
           {/* Partner Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {[
-              {no: 1, name: 'Asia Pacific University of Technology and Innovation', country: 'Malaysia', region: 'Asia'},
-              {no: 2, name: 'Ara Institute of Canterbury', country: 'New Zealand', region: 'Oceania'},
-              {no: 3, name: 'BGMEA University of Fashion and Technology', country: 'Bangladesh', region: 'Asia'},
-              {no: 4, name: 'Colorado State University', country: 'USA', region: 'North America'},
-              {no: 5, name: 'Dresden International University', country: 'Germany', region: 'Europe'},
-              {no: 6, name: 'University of Huddersfield', country: 'UK', region: 'Europe'},
-              {no: 7, name: 'James Cook University', country: 'Singapore', region: 'Asia'},
-              {no: 8, name: 'Northern Illinois University', country: 'USA', region: 'North America'},
-              {no: 9, name: 'Manchester Metropolitan University', country: 'UK', region: 'Europe'},
-              {no: 10, name: 'MAHSA University', country: 'Malaysia', region: 'Asia'},
-              {no: 11, name: 'Management Development Institute of Singapore', country: 'Singapore', region: 'Asia'},
-              {no: 12, name: 'National Dong Hwa University', country: 'Taiwan', region: 'Asia'},
-              {no: 13, name: 'PKFokam Institute of Excellence', country: 'Cameroon', region: 'Africa'},
-              {no: 14, name: 'Rochester Institute of Technology', country: 'USA', region: 'North America'},
-              {no: 15, name: 'RWTH Aachen University – ITA', country: 'Germany', region: 'Europe'},
-              {no: 16, name: 'RWTH Aachen University – International Academy', country: 'Germany', region: 'Europe'},
-              {no: 17, name: 'Swinburne University of Technology – Sarawak', country: 'Malaysia', region: 'Asia'},
-              {no: 18, name: 'Skyline University College', country: 'UAE', region: 'Middle East'},
-              {no: 19, name: 'Texas Tech University', country: 'USA', region: 'North America'},
-              {no: 20, name: 'Technical University of Liberec', country: 'Czech Republic', region: 'Europe'},
-              {no: 21, name: 'University of Leeds', country: 'UK', region: 'Europe'},
-              {no: 22, name: "Taylor's University", country: 'Malaysia', region: 'Asia'},
-              {no: 23, name: 'upGrad Connect', country: 'Australia', region: 'Oceania'},
-              {no: 24, name: 'Sri Lanka Institute of Textile and Apparel (SLITA)', country: 'Sri Lanka', region: 'Asia'},
-              {no: 25, name: 'Multimedia University', country: 'Malaysia', region: 'Asia'},
-              {no: 26, name: 'Tianjin University', country: 'China', region: 'Asia'},
-              {no: 27, name: 'Universiti Teknologi Brunei', country: 'Brunei', region: 'Asia'},
-              {no: 28, name: 'University of Seoul', country: 'South Korea', region: 'Asia'},
-              {no: 29, name: 'École de Design – Intuit Lab', country: 'France', region: 'Europe'},
-              {no: 30, name: 'University of Nottingham', country: 'UK', region: 'Europe'},
-              {no: 31, name: 'Ben-Gurion University', country: 'Israel', region: 'Middle East'}
-            ].map((partner, index) => (
-              <div key={index} className="group relative bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-2xl hover:border-[#1565d8] transition-all duration-300 hover:-translate-y-2">
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#1565d8]/5 to-[#228be6]/5 rounded-full blur-2xl group-hover:from-[#1565d8]/10 group-hover:to-[#228be6]/10 transition-all"></div>
-                <div className="relative">
-                  <div className="flex items-start justify-between mb-3">
-                    <span className="inline-block px-3 py-1 bg-gradient-to-r from-[#1565d8]/10 to-[#228be6]/10 rounded-full">
-                      <span className="text-xs font-bold text-[#1565d8]">{partner.region}</span>
-                    </span>
-                    <span className="text-2xl font-bold text-gray-200 group-hover:text-[#1565d8] transition-colors">{String(partner.no).padStart(2, '0')}</span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6 mb-12">
+            {displayedPartners.map((partner, index) => (
+              <div
+                key={index}
+                className="group relative p-4 sm:p-5 rounded-xl bg-white border border-gray-200 hover:border-[#1565d8] shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full"
+              >
+                <div className="absolute top-0 right-0 w-14 h-14 bg-gradient-to-br from-[#1565d8]/5 to-[#228be6]/5 rounded-full blur-xl group-hover:from-[#1565d8]/10 group-hover:to-[#228be6]/10"></div>
+                <div className="relative flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#1565d8]/10 to-[#228be6]/10 flex items-center justify-center text-[#1565d8] font-bold text-sm shrink-0">
+                    {String(partner.no).padStart(2, '0')}
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-[#1565d8] transition-colors">
-                    {partner.name}
-                  </h3>
-                  <div className="flex items-center justify-between pt-3 border-t border-gray-100">
-                    <span className="text-sm text-gray-600 font-semibold">{partner.country}</span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-[11px] sm:text-xs px-2 py-0.5 rounded-full bg-gray-100 text-[#1565d8] font-semibold">
+                        {partner.region}
+                      </span>
+                    </div>
+                    <h3 className="text-sm sm:text-base font-semibold text-gray-900 leading-snug line-clamp-2 group-hover:text-[#1565d8] transition-colors">
+                      {partner.name}
+                    </h3>
+                    <div className="mt-2 flex items-center gap-2 text-gray-600">
+                      <MapPin className="w-4 h-4 text-[#1565d8]" />
+                      <span className="text-xs sm:text-sm font-medium truncate">{partner.country}</span>
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+
+          {/* Load More Button (Mobile Only) */}
+          {isMobile && !showAllPartners && (
+            <div className="text-center mb-12">
+              <button
+                onClick={() => setShowAllPartners(true)}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#1565d8] to-[#228be6] text-white rounded-full hover:from-[#1b4965] hover:to-[#1565d8] transition-all transform hover:scale-105 shadow-lg font-semibold"
+              >
+                Explore More
+              </button>
+            </div>
+          )}
 
           {/* Regional Distribution */}
           <div className="bg-gradient-to-br from-[#1b2840] to-[#1565d8] rounded-2xl p-10 text-white shadow-2xl">
@@ -329,7 +417,7 @@ export default function Partnerships() {
       </section>
 
       {/* Partnership Opportunities */}
-      <section className="py-20 px-6 bg-gradient-to-b from-gray-50 to-white scroll-animate">
+      <section className="py-20 px-6 bg-gradient-to-b from-gray-50 to-white scroll-animate" id="partnerships_opportunities">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
@@ -354,7 +442,7 @@ export default function Partnerships() {
       </section>
 
       {/* Why Partner With Us */}
-      <section className="py-20 px-6 bg-white scroll-animate">
+      <section className="py-20 px-6 bg-white scroll-animate" id="why_partner_with_us">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
@@ -410,7 +498,7 @@ export default function Partnerships() {
       </section>
 
       {/* Contact Form */}
-      <section className="py-20 px-6 bg-gradient-to-b from-gray-50 to-white scroll-animate">
+      <section className="py-20 px-6 bg-gradient-to-b from-gray-50 to-white scroll-animate" id="contact_form">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
@@ -420,6 +508,43 @@ export default function Partnerships() {
               Let's explore how we can work together. Fill out the form below and our team will get back to you soon.
             </p>
           </div>
+
+          {/* Status Messages */}
+          {formStatus.type !== 'idle' && (
+            <div className={`mb-6 p-6 rounded-xl border-2 ${
+              formStatus.type === 'success' 
+                ? 'bg-green-50 border-green-300' 
+                : formStatus.type === 'error' 
+                ? 'bg-red-50 border-red-300' 
+                : 'bg-blue-50 border-blue-300'
+            }`}>
+              <div className="flex items-center justify-center gap-3">
+                {formStatus.type === 'success' && (
+                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                )}
+                {formStatus.type === 'error' && (
+                  <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                )}
+                {formStatus.type === 'loading' && (
+                  <svg className="animate-spin h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                )}
+                <p className={`text-center font-semibold ${
+                  formStatus.type === 'success' ? 'text-green-800' :
+                  formStatus.type === 'error' ? 'text-red-800' :
+                  'text-blue-800'
+                }`}>
+                  {formStatus.message}
+                </p>
+              </div>
+            </div>
+          )}
 
           <form 
             onSubmit={handleSubmit}
@@ -586,9 +711,18 @@ export default function Partnerships() {
             <div className="text-center">
               <button
                 type="submit"
-                className="bg-gradient-to-r from-[#1565d8] to-[#228be6] hover:from-[#1b4965] hover:to-[#1565d8] text-white font-semibold py-4 px-10 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+                disabled={formStatus.type === 'loading'}
+                className="bg-gradient-to-r from-[#1565d8] to-[#228be6] hover:from-[#1b4965] hover:to-[#1565d8] text-white font-semibold py-4 px-10 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               >
-                Let's Collaborate
+                {formStatus.type === 'loading' ? (
+                  <span className="flex items-center gap-2">
+                    <svg className="animate-spin h-5 w-5" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Sending...
+                  </span>
+                ) : "Let's Collaborate"}
               </button>
               <p className="mt-4 text-sm text-gray-500">
                 Thank you for your interest in partnering with Kumaraguru. Our Global Engagement team will connect with you shortly to explore possibilities together.

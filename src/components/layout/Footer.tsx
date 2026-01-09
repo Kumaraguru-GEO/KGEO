@@ -89,7 +89,7 @@ export function Footer() {
             {/* Social Links */}
             <div className="flex gap-4">
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/school/kct/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative"
@@ -103,7 +103,7 @@ export function Footer() {
                 </div>
               </a>
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/KCT.edu/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative"
@@ -117,7 +117,7 @@ export function Footer() {
                 </div>
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/kct_84"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative"

@@ -52,11 +52,11 @@ export function KIOutbound() {
   }, []);
 
   const sections = [
-    { id: 'study-abroad', label: '01 – Study Abroad' },
-    { id: 'projects-internships', label: '02 – Projects & Internships' },
-    { id: 'short-term', label: '03 – Short-Term Programs' },
-    { id: 'summer-programs', label: '04 – Summer Schools' },
-    { id: 'counseling', label: '05 – Global Future Centre' }
+    { id: 'study-abroad', label: 'Study Abroad' },
+    { id: 'projects-internships', label: 'Projects & Internships' },
+    { id: 'short-term', label: 'Short-Term Programs' },
+    { id: 'summer-programs', label: 'Summer Schools' },
+    { id: 'counseling', label: ' Global Future Centre' }
   ];
 
   const scrollToSection = (id: string) => {

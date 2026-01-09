@@ -75,7 +75,7 @@ export default function GlobalFaculty() {
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/src/assets/images/global-faculty-main.jpg"
+            src="../../src/assets/images/global-faculty-main.jpg"
             alt="Global Faculty Engagement"
             className="w-full h-full object-cover"
           />
