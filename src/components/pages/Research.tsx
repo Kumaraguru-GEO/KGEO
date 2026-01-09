@@ -45,10 +45,13 @@ export default function Research() {
     }
   };
 
-  const fadeIn = (index: number) => ({
-    opacity: isVisible[index] ? 1 : 0,
-    y: isVisible[index] ? 0 : 20,
-    transition: { duration: 0.6, delay: index * 0.1 },
+  const fadeInVariants = (index: number) => ({
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, delay: index * 0.1 },
+    },
   });
 
   const researchAreas = [
@@ -130,7 +133,9 @@ export default function Research() {
         <div className="container mx-auto px-4">
           <motion.div
             ref={(el) => addToRefs(el, 0)}
-            style={fadeIn(0)}
+            initial="hidden"
+            animate={isVisible[0] ? "visible" : "hidden"}
+            variants={fadeInVariants(0)}
             className="max-w-4xl mx-auto text-center"
           >
             <p className="text-lg text-gray-700 leading-relaxed mb-8">
@@ -148,7 +153,9 @@ export default function Research() {
         <div className="container mx-auto px-4">
           <motion.div
             ref={(el) => addToRefs(el, 1)}
-            style={fadeIn(1)}
+            initial="hidden"
+            animate={isVisible[1] ? "visible" : "hidden"}
+            variants={fadeInVariants(1)}
             className="max-w-4xl mx-auto"
           >
             <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Research Areas & Past Highlights</h2>
@@ -200,7 +207,9 @@ export default function Research() {
         <div className="container mx-auto px-4">
           <motion.div
             ref={(el) => addToRefs(el, 2)}
-            style={fadeIn(2)}
+            initial="hidden"
+            animate={isVisible[2] ? "visible" : "hidden"}
+            variants={fadeInVariants(2)}
             className="max-w-4xl mx-auto"
           >
             <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Global Funding & Collaborative Grant Opportunities</h2>
@@ -252,7 +261,9 @@ export default function Research() {
         <div className="container mx-auto px-4">
           <motion.div
             ref={(el) => addToRefs(el, 3)}
-            style={fadeIn(3)}
+            initial="hidden"
+            animate={isVisible[3] ? "visible" : "hidden"}
+            variants={fadeInVariants(3)}
             className="max-w-4xl mx-auto"
           >
             <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">PhD Co-Supervision & Doctoral Collaboration</h2>
@@ -336,7 +347,9 @@ export default function Research() {
         <div className="container mx-auto px-4">
           <motion.div
             ref={(el) => addToRefs(el, 4)}
-            style={fadeIn(4)}
+            initial="hidden"
+            animate={isVisible[4] ? "visible" : "hidden"}
+            variants={fadeInVariants(4)}
             className="max-w-4xl mx-auto"
           >
             <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Scholars' Residencies at Kumaraguru</h2>
@@ -417,7 +430,9 @@ export default function Research() {
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             ref={(el) => addToRefs(el, 5)}
-            style={fadeIn(5)}
+            initial="hidden"
+            animate={isVisible[5] ? "visible" : "hidden"}
+            variants={fadeInVariants(5)}
             className="max-w-4xl mx-auto text-center text-white"
           >
             <h2 className="text-3xl font-bold mb-8">Ready to Collaborate?</h2>
@@ -447,7 +462,9 @@ export default function Research() {
         <div className="container mx-auto px-4">
           <motion.div
             ref={(el) => addToRefs(el, 6)}
-            style={fadeIn(6)}
+            initial="hidden"
+            animate={isVisible[6] ? "visible" : "hidden"}
+            variants={fadeInVariants(6)}
             className="max-w-4xl mx-auto"
           >
             <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">About Coimbatore</h2>

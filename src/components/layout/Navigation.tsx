@@ -97,13 +97,13 @@ export function Navigation() {
                     >
                       KI Outbound Student
                     </Link>
-                    <a
-                      href="/inbound-students"
+                    <Link
+                      to="/inbound-students"
                       className="block px-4 py-3 text-[#1b2840] hover:bg-[#1565d8] hover:text-white transition-colors border-t border-gray-100"
                       style={{ fontSize: '15px', fontWeight: '500' }}
                     >
                       Inbound Student
-                    </a>
+                    </Link>
                   </div>
                 )}
               </div>
@@ -150,22 +150,22 @@ export function Navigation() {
               >
                 Partnerships
               </Link>
-              <a
-                href="/global-faculty"
+              <Link
+                to="/global-faculty"
                 className="text-[#1b2840] hover:text-[#228be6] transition-colors py-2"
                 style={{ fontSize: '16px', fontWeight: '500' }}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Global Faculty
-              </a>
-              <a
-                href="/research"
+              </Link>
+              <Link
+                to="/research"
                 className="text-[#1b2840] hover:text-[#228be6] transition-colors py-2"
                 style={{ fontSize: '16px', fontWeight: '500' }}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Research
-              </a>
+              </Link>
               
               {/* Mobile Student Dropdown */}
               <div>
@@ -187,14 +187,14 @@ export function Navigation() {
                     >
                       KI Outbound Student
                     </Link>
-                    <a
-                      href="/inbound-students"
+                    <Link
+                      to="/inbound-students"
                       className="block text-[#1b2840] hover:text-[#228be6] transition-colors py-2"
                       style={{ fontSize: '15px', fontWeight: '500' }}
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Inbound Student
-                    </a>
+                    </Link>
                   </div>
                 )}
               </div>
