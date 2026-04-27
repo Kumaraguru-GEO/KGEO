@@ -167,7 +167,7 @@ For internal development:
 
 ## 📞 Contact
 
-For questions or support, contact the K-GEO team at global@kumaraguru.in
+For questions or support, contact the K-GEO team at geo@kumaraguru.edu.in
 
 ---
 

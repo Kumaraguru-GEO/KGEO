@@ -332,7 +332,7 @@ export default async function handler(req, res) {
               <p style="font-size: 15px; margin: 25px 0 15px;">If you have urgent questions, feel free to reach out:</p>
               
               <div style="background: #f8f9fa; padding: 18px; border-radius: 8px; text-align: center; margin: 20px 0;">
-                <p style="margin: 5px 0; color: #555;">📧 <a href="mailto:global@kumaraguru.in" style="color: #1565d8; text-decoration: none; font-weight: 600;">global@kumaraguru.in</a></p>
+                <p style="margin: 5px 0; color: #555;">📧 <a href="mailto:geo@kumaraguru.edu.in" style="color: #1565d8; text-decoration: none; font-weight: 600;">geo@kumaraguru.edu.in</a></p>
                 <p style="margin: 5px 0; color: #555;">📍 K-GEO Office, Kumaraguru Campus</p>
               </div>
 

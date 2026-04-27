@@ -109,7 +109,7 @@ export function AboutPage() {
     {
       name: 'Dr. Global Lead',
       role: 'Director, Global Engagement',
-      email: 'global@kumaraguru.in',
+      email: 'geo@kumaraguru.edu.in',
     },
     {
       name: 'Dr. International Coordinator',
@@ -476,7 +476,7 @@ export function AboutPage() {
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <a
-                  href="mailto:global@kumaraguru.in"
+                  href="mailto:geo@kumaraguru.edu.in"
                   className="inline-flex items-center gap-3 px-8 py-4 bg-white text-[#1565d8] rounded-full hover:bg-gray-100 transition-all transform hover:scale-105 shadow-xl font-semibold"
                 >
                   Start Collaboration

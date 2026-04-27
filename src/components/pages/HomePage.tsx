@@ -696,7 +696,7 @@ export function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 px-4">
             <a
-              href="mailto:global@kumaraguru.in"
+              href="mailto:geo@kumaraguru.edu.in"
               className="inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-white text-[#1565d8] rounded-[10px] hover:bg-gray-100 transition-all w-full sm:w-auto"
               style={{ fontSize: 'clamp(16px, 2.2vw, 18px)', fontWeight: '600' }}
             >

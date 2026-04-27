@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Globe, ExternalLink } from 'lucide-react';
-import imgLogo from 'figma:asset/af311d09d89dbde5575dc46a338b003dee158233.png';
+import imgLogo from '../../assets/KGEO-LOGO.jpeg';
 import imgLinkedinIcon from 'figma:asset/65434bf1e68b7a3af585e5b171383d1f385d4cb2.png';
 import imgFacebookIcon from 'figma:asset/5f247d80fb34868c90f66b4f9e2cb0944048ed9e.png';
 import imgInstagramIcon from 'figma:asset/978e5beef8cbe3237e10c5ea364b3aea1b21d19c.png';
@@ -38,8 +38,8 @@ export function Footer() {
     {
       icon: Mail,
       label: 'Email',
-      value: 'global@kumaraguru.in',
-      link: 'mailto:global@kumaraguru.in',
+      value: 'geo@kumaraguru.edu.in',
+      link: 'mailto:geo@kumaraguru.edu.in',
     },
     {
       icon: Globe,
@@ -89,7 +89,7 @@ export function Footer() {
             {/* Social Links */}
             <div className="flex gap-4">
               <a
-                href="https://www.linkedin.com/school/kct/"
+                href="https://www.linkedin.com/company/k-geo/posts/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative"
@@ -117,7 +117,7 @@ export function Footer() {
                 </div>
               </a>
               <a
-                href="https://www.instagram.com/kct_84"
+                href="https://www.instagram.com/kumaraguru_geo/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative"

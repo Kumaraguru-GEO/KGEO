@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
-import imgLogo from '../../assets/af311d09d89dbde5575dc46a338b003dee158233.png';
+import imgLogo from '../../assets/KGEO-LOGO.jpeg';
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

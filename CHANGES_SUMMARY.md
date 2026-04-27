@@ -7,7 +7,7 @@
 - Cards now show only university name, country, and region badge
 
 ### 2. Email Link for "Partner With Us" Button ✅
-- Added mailto link: `global@kumaraguru.in?subject=Partnership Inquiry - Kumaraguru Institutions`
+- Added mailto link: `geo@kumaraguru.edu.in?subject=Partnership Inquiry - Kumaraguru Institutions`
 - Button now opens email client when clicked
 
 ## 🔄 KI Outbound Page - IN PROGRESS

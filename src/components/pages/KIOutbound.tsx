@@ -849,7 +849,7 @@ export function KIOutbound() {
           <div className="flex flex-col sm:flex-row justify-center gap-6 mb-8">
             <div className="flex items-center justify-center gap-3">
               <Mail className="w-6 h-6" />
-              <span>global@kumaraguru.in</span>
+              <span>geo@kumaraguru.edu.in</span>
             </div>
             <div className="flex items-center justify-center gap-3">
               <MapPin className="w-6 h-6" />
